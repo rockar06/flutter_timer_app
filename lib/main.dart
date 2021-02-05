@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: BlocProvider(
-          create: (context) => TimerBloc(Ticker()),
+          create: (context) => TimerBloc(ticker: Ticker()),
           child: TimerWidget(),
         ));
   }

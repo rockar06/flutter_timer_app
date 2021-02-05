@@ -20,7 +20,7 @@ class ActionsWidget extends StatelessWidget {
         FloatingActionButton(
           child: Icon(Icons.play_arrow),
           onPressed: () => timerBloc.add(
-            TimerStarted(currentState.duration),
+            TimerStarted(duration: currentState.duration),
           ),
         ),
       ];

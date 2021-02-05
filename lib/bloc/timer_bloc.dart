@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_timer_bloc_app/bloc/timer_event.dart';
 import 'package:flutter_timer_bloc_app/bloc/timer_state.dart';
@@ -11,9 +12,16 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
 
   StreamSubscription<int> _tickerSubscription;
 
-  TimerBloc(this._ticker)
-      : assert(_ticker != null),
+  TimerBloc({@required Ticker ticker})
+      : assert(ticker != null),
+        _ticker = ticker,
         super(TimerInitial(_duration));
+
+  @override
+  void onTransition(Transition<TimerEvent, TimerState> transition) {
+    print(transition);
+    super.onTransition(transition);
+  }
 
   @override
   Stream<TimerState> mapEventToState(TimerEvent event) async* {
@@ -41,13 +49,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     _tickerSubscription?.cancel();
     _tickerSubscription = _ticker
         .tick(ticks: start.duration)
-        .listen((duration) => add(TimerTicked(duration)));
-  }
-
-  Stream<TimerState> _mapTimerTickedToState(TimerTicked tick) async* {
-    yield tick.duration > 0
-        ? TimerRunInProgress(_duration)
-        : TimerRunComplete();
+        .listen((duration) => add(TimerTicked(duration: duration)));
   }
 
   Stream<TimerState> _mapTimerPausedToState(TimerPaused pause) async* {
@@ -67,5 +69,11 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   Stream<TimerState> _mapTimerResetToState(TimerReset reset) async* {
     _tickerSubscription?.cancel();
     yield TimerInitial(_duration);
+  }
+
+  Stream<TimerState> _mapTimerTickedToState(TimerTicked tick) async* {
+    yield tick.duration > 0
+        ? TimerRunInProgress(_duration)
+        : TimerRunComplete();
   }
 }

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 
 abstract class TimerEvent extends Equatable {
   const TimerEvent();
@@ -10,7 +11,7 @@ abstract class TimerEvent extends Equatable {
 class TimerStarted extends TimerEvent {
   final int duration;
 
-  const TimerStarted(this.duration);
+  const TimerStarted({@required this.duration});
 
   @override
   String toString() => 'TimerStarted { duration: $duration }';
@@ -25,7 +26,7 @@ class TimerReset extends TimerEvent {}
 class TimerTicked extends TimerEvent {
   final int duration;
 
-  const TimerTicked(this.duration);
+  const TimerTicked({@required this.duration});
 
   @override
   List<Object> get props => [duration];

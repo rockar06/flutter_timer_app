@@ -19,20 +19,23 @@ class TimerWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Center(
-            child: BlocBuilder<TimerBloc, TimerState>(
-              builder: (context, state) {
-                final String minuteStr = ((state.duration / 60) % 60)
-                    .floor()
-                    .toString()
-                    .padLeft(2, '0');
-                final String secondsStr =
-                    (state.duration % 60).floor().toString().padLeft(2, '0');
-                return Text(
-                  '$minuteStr:$secondsStr',
-                  style: timerTextStyle,
-                );
-              },
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 100.0),
+            child: Center(
+              child: BlocBuilder<TimerBloc, TimerState>(
+                builder: (context, state) {
+                  final String minuteStr = ((state.duration / 60) % 60)
+                      .floor()
+                      .toString()
+                      .padLeft(2, '0');
+                  final String secondsStr =
+                      (state.duration % 60).floor().toString().padLeft(2, '0');
+                  return Text(
+                    '$minuteStr:$secondsStr',
+                    style: timerTextStyle,
+                  );
+                },
+              ),
             ),
           ),
           BlocBuilder<TimerBloc, TimerState>(
