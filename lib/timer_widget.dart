@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_timer_bloc_app/actions_widget.dart';
 import 'package:flutter_timer_bloc_app/bloc/bloc.dart';
 
 class TimerWidget extends StatelessWidget {
@@ -33,6 +34,11 @@ class TimerWidget extends StatelessWidget {
                 );
               },
             ),
+          ),
+          BlocBuilder<TimerBloc, TimerState>(
+            buildWhen: (previousState, state) =>
+                state.runtimeType != previousState.runtimeType,
+            builder: (context, state) => ActionsWidget(),
           )
         ],
       ),
