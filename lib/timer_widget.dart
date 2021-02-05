@@ -27,7 +27,10 @@ class TimerWidget extends StatelessWidget {
                     .padLeft(2, '0');
                 final String secondsStr =
                     (state.duration % 60).floor().toString().padLeft(2, '0');
-                return Text('$minuteStr:$secondsStr');
+                return Text(
+                  '$minuteStr:$secondsStr',
+                  style: timerTextStyle,
+                );
               },
             ),
           )
