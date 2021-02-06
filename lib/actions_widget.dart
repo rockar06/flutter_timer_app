@@ -24,7 +24,8 @@ class ActionsWidget extends StatelessWidget {
           ),
         ),
       ];
-    } else if (currentState is TimerRunInProgress) {
+    }
+    if (currentState is TimerRunInProgress) {
       return [
         FloatingActionButton(
           child: Icon(Icons.pause),
@@ -39,7 +40,8 @@ class ActionsWidget extends StatelessWidget {
           ),
         ),
       ];
-    } else if (currentState is TimerRunPause) {
+    }
+    if (currentState is TimerRunPause) {
       return [
         FloatingActionButton(
           child: Icon(Icons.play_arrow),
@@ -54,7 +56,8 @@ class ActionsWidget extends StatelessWidget {
           ),
         ),
       ];
-    } else if (currentState is TimerRunComplete) {
+    }
+    if (currentState is TimerRunComplete) {
       return [
         FloatingActionButton(
           child: Icon(Icons.replay),

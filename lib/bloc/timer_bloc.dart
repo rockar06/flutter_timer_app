@@ -73,7 +73,7 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
 
   Stream<TimerState> _mapTimerTickedToState(TimerTicked tick) async* {
     yield tick.duration > 0
-        ? TimerRunInProgress(_duration)
+        ? TimerRunInProgress(tick.duration)
         : TimerRunComplete();
   }
 }
