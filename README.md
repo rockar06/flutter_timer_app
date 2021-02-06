@@ -1,16 +1,17 @@
 # flutter_timer_bloc_app
 
-A new Flutter application.
+A new Flutter application to show the usage of Bloc library in a Timer  
+application
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Here you can find the documentation for the tutorial:
 
-A few resources to get you started if this is your first Flutter project:
+- [Flutter Timer Tutorial](https://bloclibrary.dev/#/fluttertimertutorial)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+NOTE: The [waves library](https://pub.dev/packages/wave) used in this
+project, has an issue if we are using null safety in Flutter, until
+this [PR](https://github.com/i-protoss/wave/pull/25) is not merged to
+master branch, a workaround is modifying the `CustomConfig` file from
+local resources as show [here](https://github.com/i-protoss/wave/blob/0377d3b06b8df762d481e64bf4057d73fdafdaa2/lib/config.dart)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
